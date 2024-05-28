@@ -1,4 +1,4 @@
-# Frame Overview
+# Green Candle Overview
 
 <div
   style={{
@@ -7,15 +7,15 @@
     overflow: "hidden",
   }}
 >
-  <img src="https://i.imgur.com/6M3lec6.png" alt="Frame Image" />
+  <img src="https://i.imgur.com/6M3lec6.png" alt="Green Candle Image" />
 </div>
 
-Frame is an Ethereum rollup.
+Green Candle is an Ethereum rollup.
 
 Rollups are a layer 2 scaling solution built on top of Ethereum.
-Frame is EVM-compatible which means you can do anything on Frame that you would be able to do on Ethereum mainnet - deploy contracts, use Web3 apps, interact with wallets, etc.
-However, because Frame is a rollup, transactions will be cheaper and faster compared to Ethereum.
-Frame is an optimistic rollup which means it inherits many security properties from Ethereum.
+Green Candle is EVM-compatible which means you can do anything on Green Candle that you would be able to do on Ethereum mainnet - deploy contracts, use Web3 apps, interact with wallets, etc.
+However, because Green Candle is a rollup, transactions will be cheaper and faster compared to Ethereum.
+Green Candle is an optimistic rollup which means it inherits many security properties from Ethereum.
 
 ## How Rollups Work
 
@@ -30,7 +30,7 @@ However, this process is slower and more expensive than submitting to a sequence
 
 ## Optimistic Rollup
 
-Frame is an optimistic rollup which means it uses "fraud proofs" to determine whether withdrawals from the network are valid.
+Green Candle is an optimistic rollup which means it uses "fraud proofs" to determine whether withdrawals from the network are valid.
 Optimistic rollups assume that all transactions are valid by default, hence the "optimism".
 However, any party can submit a fraud proof to prove that a state transition in the chain is invalid.
 Transactions than involve L2 to L1 communication (including withdrawals) need to wait for the dispute window (~7 days) to pass before being finalized.
@@ -38,9 +38,9 @@ This 7 day dispute window gives validators enough time to submit fraud proofs wi
 
 ## Rollup Tech
 
-Frame is built using [Arbitrum's Nitro stack](https://docs.arbitrum.io/why-nitro).
+Green Candle is built using [Arbitrum's Nitro stack](https://docs.arbitrum.io/why-nitro).
 Nitro is the latest version of Arbitrum technology which includes a complete optimistic rollup system, a sequencer, token bridges, fraud proofs, and more.
 Complete documentation of Nitro can be found on [Github](https://github.com/OffchainLabs/nitro).
 
-Nitro is EVM compatible, so contracts that are written for mainnet can be deployed onto Frame without any modifications.
-Applications requiring read or write access to Frame can employ the same processes used on mainnet, with the only difference being a different RPC and chain ID.
+Nitro is EVM compatible, so contracts that are written for mainnet can be deployed onto Green Candle without any modifications.
+Applications requiring read or write access to Green Candle can employ the same processes used on mainnet, with the only difference being a different RPC and chain ID.

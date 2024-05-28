@@ -1,4 +1,4 @@
-# Running a Frame Validator
+# Running a Green Candle Validator
 
 In a Layer 2 network like Frame, a validator's job is to make sure claims about the chain state to the validating bridge are correct.
 Without at least one honest validator, a malicious actor could post an invalid state root to the validating bridge on the L1 and withdraw funds that they don't actually have.
@@ -11,8 +11,8 @@ Until then, anyone can still run a validator in [watchtower mode](https://docs.a
 
 ## Prerequisites
 
-For now, the only way to run a Frame testnet validator is to download and run a pre-built docker image.
-In the future, we will open source our Nitro repository (with Frame modifications) and allow developers to build the image from source.
+For now, the only way to run a Green Candle testnet validator is to download and run a pre-built docker image.
+In the future, we will open source our Nitro repository (with Green Candle modifications) and allow developers to build the image from source.
 
 **We recommend having at least 8GB of RAM and 20GB of storage space on your machine.**
 
@@ -31,7 +31,7 @@ cd frame-validator
 mkdir data 
 ```
 
-You will then need to download the frame validator config that we've provided [here](https://github.com/frame-network/node-config).
+You will then need to download the Green Candle validator config that we've provided [here](https://github.com/frame-network/node-config).
 ```bash filename="clone reposiory" copy
 git clone https://github.com/frame-network/node-config.git
 ```
