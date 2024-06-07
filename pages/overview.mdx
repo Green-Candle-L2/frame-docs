@@ -1,0 +1,41 @@
+# Green Candle Overview
+
+<div
+  style={{
+    textAlign: "center",
+    borderRadius: 8,
+    overflow: "hidden",
+  }}
+>
+  <img src="https://r2-storage.candl.green/overview.png" alt="Green Candle Image" />
+</div>
+
+Green Candle is an Ethereum rollup.
+
+Rollups are a layer 2 scaling solution built on top of Ethereum.
+Green Candle is EVM-compatible which means you can do anything on Green Candle that you would be able to do on Ethereum mainnet - deploy contracts, use Web3 apps, interact with wallets, etc.
+However, because Green Candle is a rollup, transactions will be cheaper and faster compared to Ethereum.
+Green Candle is an Arbitrum rollup which means it inherits many security properties from Ethereum.
+
+## How Rollups Work
+
+The core idea behind a rollup is to move computation from one blockchain (such as Ethereum) onto another blockchain (the rollup) which can process transactions quicker.
+Rollups will execute transactions, compress and bundle the transaction data, and post this data back to the underlying blockchain (the layer 1).
+This data is utilized by rollup nodes to derive the correct state of the chain, as well as by the Layer 1 network to determine the validity of withdrawals.
+
+Most rollups today have a centralized sequencer that quickly takes incoming transactions, orders the transactions, and publishes the ordering for other nodes to consume.
+The sequencer can process transactions quickly, which is why transactions are faster on rollups compared to mainnet (1-2 secs vs 12 secs).
+Users can alternatively submit transactions directly to the rollup bridge contract on L1 if they do not trust the sequencer.
+However, this process is slower and more expensive than submitting to a sequencer, and should only be used for deposits or in the case of a malicious sequencer.
+
+## Data Availability Committee
+
+Green Candle is an Arbitrum rollup which means it uses "AnyTrust" that manages data availability with a 
+permissioned set of parties known as the Data Availability Committee (DAC). This protocol reduces transaction 
+fees by introducing an additional trust assumption for data availability in lieu of Ethereum's Trustless data availability mechanism.
+
+## Rollup Tech
+
+Green Candle is built using [Arbitrum's Orbit stack](https://docs.arbitrum.io/launch-orbit-chain/orbit-gentle-introduction).
+Orbit is the latest version of Arbitrum technology which includes a complete rollup system, a sequencer, token bridges, fraud proofs, dac and more.
+Complete documentation of Orbit can be found on [Github](https://github.com/OffchainLabs/arbitrum-orbit-sdk).

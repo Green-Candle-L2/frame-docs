@@ -1,0 +1,77 @@
+# Running a Green Candle Validator
+
+In a Layer 2 network like Frame, a validator's job is to make sure claims about the chain state to the validating bridge are correct.
+Without at least one honest validator, a malicious actor could post an invalid state root to the validating bridge on the L1 and withdraw funds that they don't actually have.
+An honest validator has the ability to challenge an invalid state root, prove that it's wrong, and have the right state proposed instead.
+
+For Arbitrum Nitro specifically, staked validators (those that can challenge invalid proposals) are currently permissioned.
+In the future, [BOLD](https://medium.com/offchainlabs/bold-permissionless-validation-for-arbitrum-chains-9934eb5328cc) will allow for staked validators to join the protocol permissionlessly.
+Until then, anyone can still run a validator in [watchtower mode](https://docs.arbitrum.io/node-running/how-tos/running-a-validator#validation-strategies) which will alert the validator when an invalid state root is proposed.
+
+
+## Prerequisites
+
+For now, the only way to run a Green Candle testnet validator is to download and run a pre-built docker image.
+In the future, we will open source our Nitro repository (with Green Candle modifications) and allow developers to build the image from source.
+
+**We recommend having at least 8GB of RAM and 20GB of storage space on your machine.**
+
+In addition to software and hardware requirements above, you will also need a Sepolia RPC url.
+
+## Installation
+
+To start, make sure you have Docker installed and running on your system. You can find instructions for install Docker [here](https://docs.docker.com/engine/install/).
+
+Once you have Docker installed, you should create a local directory where the validator config and node data will live.
+Here's a suggestion:
+
+```bash filename="create directory" copy
+mkdir frame-validator
+cd frame-validator
+mkdir data 
+```
+
+You will then need to download the Green Candle validator config that we've provided [here](https://github.com/frame-network/node-config).
+```bash filename="clone reposiory" copy
+git clone https://github.com/frame-network/node-config.git
+```
+
+After cloning the repo, open the `testnet.config` file and replace `<SEPOLIA_RPC_HERE>` with your Sepolia RPC url.
+
+## Running the Validator
+
+- Make sure you are in the `frame-validator` directory.
+- Then start the validator by running:
+```bash filename="" copy
+docker run \
+--name frame \
+--rm \
+-it \
+-v $(pwd)/node-data:/home/user/.frame \
+-v $(pwd)/node-config/testnet.json:/home/user/testnet.json public.ecr.aws/o8e2k8j7/nitro-node:frame \
+--conf.file testnet.json
+```
+
+## Check the logs
+```bash filename="" copy
+docker logs -f frame
+```
+
+## Or add `--since` to view shorter logs
+
+Example, see the logs starting from 1 minute ago
+```bash filename="" copy
+docker logs -f frame --since 1m
+```
+
+If everything is working you should see `Running Arbitrum nitro node` and `Chain ID:  68840142 (unknown)` in your logs.
+It will take some time for your validator to catch up and validator up to the latest state of the chain.
+You'll see `validator catching up to last valid` in the logs while it updates to the latest state.
+Once the validator is caught up, you'll see `created block` in the logs when a new block is created.
+
+## Troubleshooting
+
+For more information on the various configurations for running a Frame node, you can look at the [Arbitrum Nitro docs](https://docs.arbitrum.io/node-running/how-tos/running-a-full-node).
+The full list of configurations can be found [here](https://docs.arbitrum.io/node-running/command-line-options), these command line flags translate 1:1 with the config file you cloned earlier.
+
+Please reach out on Discord if you run into any issues.
